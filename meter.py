@@ -1,6 +1,13 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import math
+
+def getXY(r, degree):
+    rad = math.radians(degree)
+    x = r * math.cos(rad)
+    y = r * math.sin(rad)
+    return int(x), int(y)
 
 img = cv2.imread('sample.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -56,3 +63,8 @@ plt.show()
 
 degree = 360 * (np.argmin(pin)/len(pin))
 print("degree:",degree)
+
+x,y = getXY(i[2]/1.414,degree-90)
+
+img = cv2.line(img,(i[0],i[1]),(i[0]-x,i[1]-y),(255,0,0),5)
+cv2.imwrite("output3.jpg",img)
