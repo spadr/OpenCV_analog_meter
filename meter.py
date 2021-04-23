@@ -23,6 +23,7 @@ resized_img = []
 
 for n in range(int(i[2]/1.414)):
     j = n + 2
+    #直交座標を使ってますが、極座標を使う方法もあると思います
     up    = process_data[ i[1]-j          , i[0]-j : i[0]+j ]
     down  = process_data[ i[1]+j          , i[0]-j : i[0]+j ]
     left  = process_data[ i[1]-j : i[1]+j ,           i[0]-j]
